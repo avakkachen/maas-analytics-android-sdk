@@ -19,6 +19,9 @@ Overview
 The MaaS Analytics SDK provides the ability to generate custom analytic events. Events can be created at a single point
 in time or with duration data for timed events.
 
+###Build requirements
+* Android SDK 2.2+ (API level 8) or above
+* Latest MaaS Core
 
 Installation
 ------------
