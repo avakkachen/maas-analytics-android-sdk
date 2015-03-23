@@ -19,9 +19,9 @@ Overview
 The MaaS Analytics SDK provides the ability to generate custom analytic events. Events can be created at a single point
 in time or with duration data for timed events.
 
-###Build requirements
+### Build Requirements
 * Android SDK 2.2+ (API level 8) or above
-* Latest MaaS Core
+* latest MaaS Core
 
 Installation
 ------------
@@ -31,10 +31,10 @@ The following libraries are required:
 MaaSCore.jar
 ```
 
-MaaS Analytics depends on MaaSCore.jar which is available here: https://github.com/phunware/maas-core-android-sdk
+MaaS Analytics depends on MaaSCore.jar, which is available here: https://github.com/phunware/maas-core-android-sdk
 
 It's recommended that you add the MaaS libraries to the 'libs' directory. This directory should contain MaaSCore.jar
-and MaaSAnalytics.jar as well as any other MaaS libraries that you are using.
+and MaaSAnalytics.jar, as well as any other MaaS libraries that you are using.
 
 Update your `AndroidManifest.xml` to include the following permissions:
 
@@ -54,9 +54,9 @@ Be sure to install the module in the `Application` `onCreate` method before regi
 @Override
 public void onCreate() {
     super.onCreate();
-    /* Other code */
+    /* other code */
     PwCoreSession.getInstance().installModules(PwAnalyticsModule.getInstance(), ...);
-    /* Other code */
+    /* other code */
 }
 ```
 
@@ -75,12 +75,12 @@ public class AnalyticsSample extends Activity
     {
         super.onCreate();
         
-        /* Other code */
+        /* other code */
         
         //Requires a context and event name.
 	     PwAnalyticsModule.addEvent(this, "Featured Page View");
         
-        /* Other code */
+        /* other code */
     }
 }
 ```
@@ -95,14 +95,14 @@ public void startLevel()
 {	
     // Start a timed event like so:
     PwAnalyticsModule.startTimedEvent(this, "My Awesome Game - Level 1");
-    // 'this' refers to a context
+    // 'This' refers to a context.
 }
 
 public void endLevel()
 {	
-	// And end a timed event pass in the same event name like so:
+	// To end a timed event, pass in the same event name like so:
 	PwAnalyticsModule.endTimedEvent(this, "My Awesome Game - Level 1");
-  // 'This' referes to a context.
+  // 'This' refers to a context.
 }
 ```
 
@@ -117,14 +117,14 @@ public void pauseGame()
 
 public void resumeGame()
 {	
-	// And end a timed event pass in the same event name like so:
+	// To end a timed event, pass in the same event name like so:
 	PwAnalyticsModule.resumeTimedEvent("My Awesome Game - Level 1");
 }
 ```
 
 ### Event Parameters
 
-MaaS Analytics allows you to paramaterize all of your events with up to 10 string key pair values.
+MaaS Analytics allows you to paramaterize all of your events with up to 10 string key / value pairs.
 *All parameter keys and values must be alphanumeric strings.*
 
 ```Java
@@ -133,7 +133,7 @@ public void onCreate()
 {
     super.onCreate();
     
-    /* Other code */
+    /* other code */
     
     HashMap<String, String> params = new HashMap<String, String>();
     params.put("gender", "male");
@@ -142,7 +142,7 @@ public void onCreate()
     params = new HashMap<String, String>();
     params.put("difficulty", "easy");
     PwAnalyticsModule.startTimedEventWithParameters(this, "My Awesome Game - Level 1", params);
-    /* Other code */
+    /* other code */
 }
 
 @Override
@@ -152,7 +152,7 @@ public void onStop()
     params = new HashMap<String, String>();
     params.put("difficulty", "easy");
     params.put("attempts", "5");
-    // Keep in mind that when calling endTimedEvent:withParameters, it will replace any parameters that you specified in startTimedEvent:withParameters.
+    // Keep in mind that calling endTimedEvent:withParameters will replace any parameters that you specified in startTimedEvent:withParameters.
     PwAnalyticsModule.endTimedEventWithParameters(this, "My Awesome Game - Level 1", params);
 }
 ```
